@@ -33,7 +33,7 @@ export default function Repositorios() {
 
       <TouchableOpacity
         style={estilos.botao}
-        onPress={() => navigate("CriarRepositorio")}
+        onPress={() => navigate("CriarRepositorio", { id: params?.id || 0 })}
       >
         <Text style={estilos.textoBotao}>Adicionar novo repositório</Text>
       </TouchableOpacity>

@@ -23,7 +23,7 @@ export default function InfoRepositorio() {
 
     Alert.alert(sucesso ? 'Item atualizado com sucesso!' :'Erro ao atualizar as informações!')
 
-    goBack();
+    if (sucesso) goBack();
   };
 
   return (

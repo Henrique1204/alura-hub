@@ -16,13 +16,27 @@ export const buscarRepositorios = async (postId) => {
 
 export const atualizarRepositorios = async (id, body) => {
   try {
-    const { data, status } = await api.put(`/repos/${id}`, body);
+    const { status } = await api.put(`/repos/${id}`, body);
 
     if (status !== 200) throw new Error(`Erro de codigo [${status}]`);
 
     return { sucesso: true };
   } catch ({ message }) {
     console.log('[ATUALIZAR REPOSITORIO]:', message);
+
+    return { sucesso: false };
+  }
+};
+
+export const adicionarRepositorios = async (body) => {
+  try {
+    const { status } = await api.post(`/repos`, body);
+
+    if (status !== 201) throw new Error(`Erro de codigo [${status}]`);
+
+    return { sucesso: true };
+  } catch ({ message }) {
+    console.log('[ADICIONAR REPOSITORIO]:', message);
 
     return { sucesso: false };
   }
