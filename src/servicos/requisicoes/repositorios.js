@@ -13,3 +13,17 @@ export const buscarRepositorios = async (postId) => {
     return [];
   }
 };
+
+export const atualizarRepositorios = async (id, body) => {
+  try {
+    const { data, status } = await api.put(`/repos/${id}`, body);
+
+    if (status !== 200) throw new Error(`Erro de codigo [${status}]`);
+
+    return { sucesso: true };
+  } catch ({ message }) {
+    console.log('[ATUALIZAR REPOSITORIO]:', message);
+
+    return { sucesso: false };
+  }
+};

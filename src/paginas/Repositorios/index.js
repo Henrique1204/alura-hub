@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Text, View, FlatList, TouchableOpacity } from "react-native";
 
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute, useFocusEffect } from "@react-navigation/native";
 
 import estilos from "./estilos";
 import { buscarRepositorios } from "../../servicos/requisicoes/repositorios";
@@ -18,9 +18,12 @@ export default function Repositorios() {
     setRepo(resultado);
   };
 
-  useEffect(async () => {
+  // useEffect que é ativado ao trocar de rota.
+  useFocusEffect(React.useCallback(() => {
     buscar();
-  }, [params.id]);
+
+    return () => {};
+  }, [params?.id]));
 
   return (
     <View style={estilos.container}>
